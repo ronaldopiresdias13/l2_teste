@@ -1,0 +1,106 @@
+<section class="gradient-form">
+  <div class="container py-2">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-xl-6">
+        <div class="card rounded-3 text-black">
+          <div class="row g-0">
+            <div class="col-12">
+              <div class="card-body p-3">
+                <div class="text-center mb-1">
+                  <a routerLink="/">
+                    <img class="mb-1 rounded" src="assets/img/logo1.png" alt="Logo" width="70" />
+                  </a>
+                  <h4 class="h6">Crie sua conta</h4>
+                  <p class="small">
+                    Preencha os campos abaixo para criar uma nova conta:
+                  </p>
+                </div>
+
+                <form [formGroup]="form">
+                  <div class="form-body">
+                    <mat-form-field appearance="outline" class="no-padding mb-1">
+                      <mat-label>Nome</mat-label>
+                      <input matInput placeholder="Digite seu nome" formControlName="name" />
+                      <mat-icon matPrefix>person</mat-icon>
+                      <mat-error>Nome é obrigatório</mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field appearance="outline" class="no-padding mb-1">
+                      <mat-label>E-mail</mat-label>
+                      <input matInput placeholder="Digite seu e-mail" formControlName="email" />
+                      <mat-icon matPrefix>mail</mat-icon>
+                      <mat-error>E-mail é obrigatório e precisa ser válido</mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field appearance="outline" class="no-padding mb-1">
+                      <mat-label>Telefone</mat-label>
+                      <input matInput placeholder="Telefone" formControlName="phone"
+                        mask="(00) 0000-0000||(00) 00000-0000" />
+                      <mat-icon matPrefix>phone</mat-icon>
+                    </mat-form-field>
+
+                    <mat-form-field appearance="outline" class="no-padding mb-1">
+                      <mat-label>Ocupação</mat-label>
+                      <mat-icon matPrefix>person</mat-icon>
+                      <mat-select formControlName="occupation">
+                        <mat-option value="medico">Médico</mat-option>
+                        <mat-option value="paciente">Paciente</mat-option>
+                        <mat-option value="profissional da saude">Profissional de Saúde</mat-option>
+                        <mat-option value="administrador da saude">Administrador da Saúde</mat-option>
+                        <mat-option value="recepcionista">Recepcionista</mat-option>
+                        <mat-option value="outro">Outro(a)</mat-option>
+                      </mat-select>
+                    </mat-form-field>
+
+                    <mat-form-field appearance="outline" class="no-padding mb-1">
+                      <mat-label>Senha</mat-label>
+                      <input matInput [type]="passwordHidden ? 'password' : 'text'" placeholder="Digite sua senha"
+                        formControlName="password" />
+                      <mat-icon matPrefix>lock</mat-icon>
+                      <button mat-icon-button matSuffix (click)="passwordHidden = !passwordHidden"
+                        [attr.aria-label]="'Hide password'" [attr.aria-pressed]="!passwordHidden">
+                        <mat-icon>{{
+                          passwordHidden ? "visibility_off" : "visibility"
+                          }}</mat-icon>
+                      </button>
+                      <mat-error>Senha é obrigatória e precisa ter pelo menos 6
+                        caracteres</mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field appearance="outline" class="no-padding mb-1">
+                      <mat-label>Confirmar Senha</mat-label>
+                      <input matInput [type]="confirmPasswordHidden ? 'password' : 'text'"
+                        placeholder="Digite sua senha novamente" formControlName="confirm_password" />
+                      <mat-icon matPrefix>lock</mat-icon>
+                      <button mat-icon-button matSuffix (click)="confirmPasswordHidden = !confirmPasswordHidden"
+                        [attr.aria-label]="'Hide password'" [attr.aria-pressed]="!confirmPasswordHidden">
+                        <mat-icon>{{
+                          confirmPasswordHidden
+                          ? "visibility_off"
+                          : "visibility"
+                          }}</mat-icon>
+                      </button>
+                      <mat-error>Senhas não conferem</mat-error>
+                    </mat-form-field>
+                  </div>
+
+
+                  <div class="text-center pt-1 mb-2 pb-1">
+                    <button mat-raised-button color="primary" class="btn-register" [disabled]="form.invalid || btnLoad"
+                      (click)="registerUser()">
+                      <!-- <mat-spinner mode="indeterminate" *ngIf="btnLoad"></mat-spinner> -->
+                      {{ !btnLoad ? "ENVIAR" : "" }}
+                    </button>
+                    <p style="margin-top: 10px;">
+                      <a style="color: #544e97; text-decoration: none" routerLink="/login"><strong>Voltar</strong></a>
+                    </p>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
