@@ -1,0 +1,36 @@
+<div class="content">
+  <form [formGroup]="form">
+     <div class="row p-0 m-0 min-vh-100">
+        <div class="col-xl-4 d-flex flex-column justify-content-center gap-3 text-center p-4 p-sm-5">
+           <!-- <img src="/assets/img/grandes-lagos.png" alt=""> -->
+           <img src="https://www.l2code.com.br/images/Logo-Small.svg">
+           <br>
+           <span class="title">Bem-vindo ao Portal de contatos da L2 Code!</span>
+           <span class="subtitle">Faça login para continuar no Portal</span>
+           <br>
+           <mat-form-field appearance="outline">
+              <mat-label>E-mail</mat-label>
+              <input matInput formControlName="username">
+              <mat-icon matPrefix>mail</mat-icon>
+           </mat-form-field>
+           <mat-form-field appearance="outline">
+              <mat-label>Senha</mat-label>
+              <input matInput [type]="hide ? 'password' : 'text'" formControlName="password">
+              <mat-icon matPrefix>vpn_key</mat-icon>
+              <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                 [attr.aria-pressed]="hide">
+                 <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+              </button>
+           </mat-form-field>
+           <a href="#" class="forgot-password" routerLink="/forgot-password">Esqueceu sua senha?</a>
+           <button mat-flat-button color="primary" class="login-button" [disabled]="!form.valid"
+              (click)="login()">ENTRAR</button>
+
+            <a href="#">Não possui uma conta? <strong routerLink="/register">Cadastre-se</strong></a>
+        </div>
+        <div class="col-lg-8 d-none d-xl-block p-0">
+           <div class="side-image"></div>
+        </div>
+     </div>
+  </form>
+</div>
